@@ -1,0 +1,48 @@
+{% extends 'layouts/basic.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 offset-md-4" class="jumbotron text-center">
+        <div class="jumbotron text-center">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Generic errors -->
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for error in form.non_field_errors %}
+                        <li><em>{{ error }}</em></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% for field in form.visible_fields %}
+                <p>
+                    {{ field.label_tag }}
+                    <br>
+                    {{ field }}
+                </p>
+
+                <!-- Field errors-->
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <em>{{ error }}</em>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% endfor %}
+
+                <input type="hidden" name="next" value='{{ next }}'>
+
+                {% block submit_button %}{% endblock submit_button %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

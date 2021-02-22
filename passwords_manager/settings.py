@@ -90,3 +90,11 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+# Redirect url for login and logout
+
+LOGIN_REDIRECT_URL = 'user_storages:index'
+
+LOGOUT_REDIRECT_URL = 'account_management:login'
+
+LOGIN_URL = 'account_management:login'

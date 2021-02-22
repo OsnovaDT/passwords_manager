@@ -1,9 +1,10 @@
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Storage
 
 
-class StorageListView(ListView):
+class StorageListView(LoginRequiredMixin, ListView):
     template_name = 'user_storages/index.html'
     context_object_name = 'storages'
 
