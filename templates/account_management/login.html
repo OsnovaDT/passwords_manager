@@ -5,5 +5,12 @@
 {% block title %}Авторизация{% endblock title %}
 
 {% block submit_button %}
-<input class='btn btn-primary' type="submit" value="Войти">
+<input class='btn btn-success' type="submit" value="Войти">
 {% endblock submit_button %}
+
+{% block addition_text %}
+<br>
+<a class='text-dark' href="{% url 'account_management:registration' %}">
+    <input class='btn btn-primary' type="submit" value="Регистрация">
+</a>
+{% endblock addition_text %}

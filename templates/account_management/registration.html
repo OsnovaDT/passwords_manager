@@ -1,0 +1,16 @@
+{% extends 'layouts/base_form.html' %}
+
+{% load static %}
+
+{% block title %}Регистрация{% endblock title %}
+
+{% block submit_button %}
+<input class='btn btn-primary' type="submit" value="Зарегистрироваться">
+{% endblock submit_button %}
+
+{% block addition_text %}
+<br>
+<a class='text-dark' href="{% url 'account_management:login' %}">
+    <input class='btn btn-dark' type="submit" value="Назад">
+</a>
+{% endblock addition_text %}

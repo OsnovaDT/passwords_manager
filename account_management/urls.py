@@ -4,6 +4,8 @@ from django.contrib.auth.views import (
 )
 from django.urls import path, reverse_lazy
 
+from .views import RegistrationView
+
 app_name = 'account_management'
 
 urlpatterns = [
@@ -39,5 +41,12 @@ urlpatterns = [
             ),
         ),
         name='change_password'
+    ),
+
+    # Registration
+    path(
+        'registration/',
+        RegistrationView.as_view(),
+        name='registration'
     ),
 ]
