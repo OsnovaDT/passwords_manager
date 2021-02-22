@@ -1,4 +1,5 @@
 from pathlib import Path
+from os import path
 
 from decouple import config
 
@@ -37,7 +38,7 @@ ROOT_URLCONF = 'passwords_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
