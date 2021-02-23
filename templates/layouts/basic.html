@@ -49,12 +49,25 @@
                     </a>
                 </div>
             </li>
+
+            <!-- Create storage link -->
             <a class='nav-link' href='{% url "user_storages:create_storage" %}'>
                 Создать хранилище
             </a>
             {% endif %}
         </div>
     </div>
+
+    <!-- Search field -->
+    {% if user.is_authenticated %}
+    <form class="form-inline" method="get" action="{% url 'user_storages:search_storage' %}">
+        <input name="q" type="search" class="form-control mr-sm-2" placeholder="Поиск хранилища" aria-label="Search">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Искать
+        </button>
+    </form>
+    {% endif %}
 </nav>
 
 <body>

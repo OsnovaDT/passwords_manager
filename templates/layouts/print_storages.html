@@ -1,0 +1,141 @@
+{% extends 'layouts/basic.html' %}
+
+{% load static %}
+
+{% block content %}
+{% if storages %}
+<div class="container">
+    <div class="row">
+        {% for storage in storages %}
+        <div class="col-md-4">
+            <div class='jumbotron'>
+                <!-- Name -->
+                <h2 class='text-center'>{{ storage.name }}</h2>
+
+                <br>
+
+                <!-- Login -->
+                <h4><b>Логин:</b> {{ storage.account_login }}</h4>
+
+                <!-- Password -->
+                <h4><b>Пароль:</b> {{ storage.account_password }}</h4>
+
+                <!-- Notes -->
+                <h5>{{ storage.notes }}</h5>
+
+                <br>
+
+                <!-- Last edition -->
+                Последнее изменение: {{ storage.date_of_edition }}
+
+                <!-- Update button -->
+                <br><br>
+                <a href="{% url 'user_storages:update_storage' storage.pk %}">
+                    <input type="submit" class='btn btn-success' value="Изменить">
+                </a>
+
+                <!-- Delete button -->
+                <a href="{% url 'user_storages:delete_storage' storage.pk %}">
+                    <input type="submit" class='btn btn-danger' value="Удалить">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class='jumbotron'>
+    <h1 class='text-center'>
+        {% block message_about_empty_results %}
+        {% endblock message_about_empty_results %}
+    </h1>
+</div>
+</div>
+{% endif %}
+{% endblock content %}
+
+{% block footer %}
+<footer>
+    <br><br>
+    <!-- Next and previous -->
+    {% if page_obj.has_next and page_obj.has_previous %}
+    <ul class='pagination justify-content-center'>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                Предыдущая
+            </a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary' href="?page={{ page_obj.previous_page_number }}">
+                {{ page_obj.previous_page_number }}
+            </a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary active' href="?page={{ page_obj.number }}">
+                {{ page_obj.number }}
+            </a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary' href="?page={{ page_obj.next_page_number }}">
+                {{ page_obj.next_page_number }}
+            </a>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+        </li>
+    </ul>
+
+    <!-- Only next -->
+    {% elif page_obj.has_next %}
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Предыдущая</a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary active' href="?page={{ page_obj.number }}">
+                {{ page_obj.number }}
+            </a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary' href="?page={{ page_obj.next_page_number }}">
+                {{ page_obj.next_page_number }}
+            </a>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+        </li>
+    </ul>
+
+    <!-- Only previous -->
+    {% elif page_obj.has_previous %}
+    <ul class='pagination justify-content-center'>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary' href="?page={{ page_obj.previous_page_number }}">
+                {{ page_obj.previous_page_number }}
+            </a>
+        </li>
+
+        <li class='page-item'>
+            <a class='page-link btn btn-outline-primary active' href="?page={{ page_obj.number }}">
+                {{ page_obj.number }}
+            </a>
+        </li>
+
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Следующая</a>
+        </li>
+    </ul>
+    {% endif %}
+</footer>
+{% endblock footer %}

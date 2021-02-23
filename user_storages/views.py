@@ -1,5 +1,6 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.views.generic.edit import (
     CreateView, UpdateView, DeleteView
 )
@@ -43,3 +44,22 @@ class StorageDeleteView(DeleteView):
     form_class = StorageForm
     success_url = reverse_lazy('user_storages:index')
     template_name = "user_storages/delete_storage.html"
+
+
+class SearchStorageView(ListView):
+    template_name = 'user_storages/search_storage.html'
+    context_object_name = 'storages'
+    model = Storage
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+
+        return Storage.objects.filter(
+            Q(name__icontains=query)
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+
+        return context
