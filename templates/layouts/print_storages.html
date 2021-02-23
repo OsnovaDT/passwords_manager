@@ -10,23 +10,19 @@
         <div class="col-md-4">
             <div class='jumbotron'>
                 <!-- Name -->
-                <h2 class='text-center'>{{ storage.name }}</h2>
+                <a class='text-dark' href="{% url 'user_storages:storage_detail' storage.pk %}">
+                    <h2 class='text-center'>{{ storage.name }}</h2>
+                </a>
 
                 <br>
 
-                <!-- Login -->
-                <h4><b>Логин:</b> {{ storage.account_login }}</h4>
-
-                <!-- Password -->
-                <h4><b>Пароль:</b> {{ storage.account_password }}</h4>
-
                 <!-- Notes -->
-                <h5>{{ storage.notes }}</h5>
+                <h6><em>{{ storage.notes }}</em></h6>
 
                 <br>
 
                 <!-- Last edition -->
-                Последнее изменение: {{ storage.date_of_edition }}
+                <b>Последнее изменение:</b><br>{{ storage.date_of_edition }}
 
                 <!-- Update button -->
                 <br><br>

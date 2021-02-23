@@ -3,7 +3,7 @@ from django.urls import path
 from .views import (
     StorageListView, StorageCreateView,
     StorageUpdateView, StorageDeleteView,
-    SearchStorageView
+    SearchStorageView, StorageDetailView
 )
 
 app_name = 'user_storages'
@@ -42,5 +42,12 @@ urlpatterns = [
         'search_storage/',
         SearchStorageView.as_view(),
         name='search_storage'
+    ),
+
+    # Detail storage page
+    path(
+        'storage/<int:pk>/',
+        StorageDetailView.as_view(),
+        name='storage_detail'
     ),
 ]

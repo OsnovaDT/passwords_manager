@@ -1,0 +1,27 @@
+{% include 'layouts/basic.html' %}
+
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Name -->
+            <h1>{{ storage.name }}</h1>
+
+            <br>
+
+            <!-- Account login -->
+            <h3><b>Логин:</b> {{ storage.account_login }}</h3>
+
+            <!-- Account password -->
+            <h3><b>Пароль:</b> {{ storage.account_password }}</h3>
+
+            <br>
+
+            <!-- Notes -->
+            <h5><em>{{ storage.notes }}</em></h5>
+
+            {% include 'layouts/go_back_button.html' %}
+        </div>
+    </div>
+</div>

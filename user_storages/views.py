@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.views.generic.edit import (
     CreateView, UpdateView, DeleteView
 )
+from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 
 from .models import Storage
@@ -63,3 +64,8 @@ class SearchStorageView(ListView):
         context['query'] = self.request.GET.get('q')
 
         return context
+
+
+class StorageDetailView(DetailView):
+    model = Storage
+    template_name = 'user_storages/detail_storage.html'
