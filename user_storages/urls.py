@@ -1,6 +1,9 @@
 from django.urls import path
 
-from .views import StorageListView, StorageCreateView
+from .views import (
+    StorageListView, StorageCreateView,
+    StorageUpdateView,
+)
 
 app_name = 'user_storages'
 
@@ -17,5 +20,12 @@ urlpatterns = [
         'create_storage/',
         StorageCreateView.as_view(),
         name='create_storage'
+    ),
+
+    # Update storage page
+    path(
+        'update_storage/<int:pk>/',
+        StorageUpdateView.as_view(),
+        name='update_storage'
     ),
 ]

@@ -13,3 +13,12 @@ class StorageCreateForm(forms.ModelForm):
         widgets = {
             'account_password': forms.PasswordInput(),
         }
+
+
+class StorageUpdateForm(forms.ModelForm):
+    class Meta:
+        fields = (
+            'name', 'account_login',
+            'account_password', 'notes',
+        )
+        model = Storage

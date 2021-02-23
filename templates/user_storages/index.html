@@ -32,6 +32,12 @@
 
                 <!-- Last edition -->
                 Последнее изменение: {{ storage.date_of_edition }}
+
+                <!-- Update button -->
+                <br><br>
+                <a href="{% url 'user_storages:update_storage' storage.pk %}">
+                    <input type="submit" class='btn btn-success' value="Изменить">
+                </a>
             </div>
         </div>
         {% endfor %}
