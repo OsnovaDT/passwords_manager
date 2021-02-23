@@ -1,5 +1,6 @@
 from django.db import models
 from django.core import validators
+from pgcrypto import EncryptedCharField
 
 
 class Storage(models.Model):
@@ -24,7 +25,7 @@ class Storage(models.Model):
         help_text='Логин от аккаунта'
     )
 
-    account_password = models.CharField(
+    account_password = EncryptedCharField(
         'Пароль',
         max_length=50,
         db_column='account_password',
