@@ -26,7 +26,7 @@
 
 <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
     <a class='navbar-brand' href='{% url "user_storages:index" %}'>
-        <img src='{% static "user_storages/img/emblem.png" %}' width='30' height='30'>
+        <img src='{% static "user_storages/img/emblem.png" %}' width='30' height='30'> Менеджер паролей
     </a>
 
     <div class='collapse navbar-collapse'>
@@ -49,10 +49,10 @@
                     </a>
                 </div>
             </li>
-            {% endif %}
-
-            <a class='nav-link' href='#'>
+            <a class='nav-link' href='{% url "user_storages:create_storage" %}'>
+                Создать хранилище
             </a>
+            {% endif %}
         </div>
     </div>
 </nav>

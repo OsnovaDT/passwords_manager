@@ -8,6 +8,7 @@
 
 
 {% block content %}
+{% if storages %}
 <div class="container">
     <div class="row">
         {% for storage in storages %}
@@ -36,6 +37,12 @@
         {% endfor %}
     </div>
 </div>
+{% else %}
+<div class='jumbotron'>
+    <h1 class='text-center'>У вас еще нет хранилищ</h1>
+</div>
+</div>
+{% endif %}
 {% endblock content %}
 
 {% block footer %}

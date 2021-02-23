@@ -14,7 +14,7 @@ class Storage(models.Model):
         'auth.User',
         on_delete=models.CASCADE,
         verbose_name='Владелец хранилища',
-        db_column='owner'
+        db_column='owner',
     )
 
     account_login = models.CharField(
