@@ -9,8 +9,5 @@
 {% endblock submit_button %}
 
 {% block addition_text %}
-<br>
-<a class='text-dark' href="{% url 'account_management:login' %}">
-    <input class='btn btn-dark' type="submit" value="Назад">
-</a>
+{% include 'layouts/go_back_button.html' %}
 {% endblock addition_text %}
