@@ -44,7 +44,7 @@ class Storage(models.Model):
         db_column='date_of_creation'
     )
 
-    date_of_edition = models.DateField(
+    date_of_edition = models.DateTimeField(
         'Дата изменения хранилища',
         auto_now=True,
         db_column='date_of_edition'
@@ -56,6 +56,6 @@ class Storage(models.Model):
     class Meta:
         verbose_name = 'Хранилище'
         verbose_name_plural = 'Хранилища'
-        ordering = ['date_of_edition', 'name']
+        ordering = ['-date_of_edition', 'name']
         unique_together = ('name', 'owner')
         db_table = 'storage'
