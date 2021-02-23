@@ -15,7 +15,7 @@ class StorageCreateForm(forms.ModelForm):
         }
 
 
-class StorageUpdateForm(forms.ModelForm):
+class StorageForm(forms.ModelForm):
     class Meta:
         fields = (
             'name', 'account_login',

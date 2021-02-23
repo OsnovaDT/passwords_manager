@@ -38,6 +38,11 @@
                 <a href="{% url 'user_storages:update_storage' storage.pk %}">
                     <input type="submit" class='btn btn-success' value="Изменить">
                 </a>
+
+                <!-- Delete button -->
+                <a href="{% url 'user_storages:delete_storage' storage.pk %}">
+                    <input type="submit" class='btn btn-danger' value="Удалить">
+                </a>
             </div>
         </div>
         {% endfor %}

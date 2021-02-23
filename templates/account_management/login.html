@@ -8,7 +8,7 @@
 <input class='btn btn-success' type="submit" value="Войти">
 {% endblock submit_button %}
 
-{% block addition_text %}
+{% block after_form %}
 <br>
 <a class='text-dark' href="{% url 'account_management:registration' %}">
     <input class='btn btn-primary' type="submit" value="Регистрация">
@@ -17,4 +17,4 @@
 <a class='text-dark' href="{% url 'account_management:password_reset' %}">
     Забыли пароль?
 </a>
-{% endblock addition_text %}
+{% endblock after_form %}

@@ -6,6 +6,9 @@
 <div class="row">
     <div class="col-md-4 offset-md-4" class="jumbotron text-center">
         <div class="jumbotron text-center">
+            {% block before_form %}
+            {% endblock before_form %}
+
             <form method="post">
                 {% csrf_token %}
 
@@ -43,8 +46,8 @@
                 {% block submit_button %}{% endblock submit_button %}
             </form>
 
-            {% block addition_text %}
-            {% endblock addition_text %}
+            {% block after_form %}
+            {% endblock after_form %}
         </div>
     </div>
 </div>

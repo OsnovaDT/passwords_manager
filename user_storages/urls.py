@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (
     StorageListView, StorageCreateView,
-    StorageUpdateView,
+    StorageUpdateView, StorageDeleteView
 )
 
 app_name = 'user_storages'
@@ -27,5 +27,12 @@ urlpatterns = [
         'update_storage/<int:pk>/',
         StorageUpdateView.as_view(),
         name='update_storage'
+    ),
+
+    # Delete storage page
+    path(
+        'delete_storage/<int:pk>/',
+        StorageDeleteView.as_view(),
+        name='delete_storage'
     ),
 ]

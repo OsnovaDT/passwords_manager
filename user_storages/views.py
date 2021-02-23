@@ -1,10 +1,12 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import (
+    CreateView, UpdateView, DeleteView
+)
 from django.urls import reverse_lazy
 
 from .models import Storage
-from .forms import StorageCreateForm, StorageUpdateForm
+from .forms import StorageCreateForm, StorageForm
 
 
 class StorageListView(LoginRequiredMixin, ListView):
@@ -31,6 +33,13 @@ class StorageCreateView(CreateView):
 
 class StorageUpdateView(UpdateView):
     model = Storage
-    form_class = StorageUpdateForm
+    form_class = StorageForm
     success_url = reverse_lazy('user_storages:index')
     template_name = "user_storages/update_storage.html"
+
+
+class StorageDeleteView(DeleteView):
+    model = Storage
+    form_class = StorageForm
+    success_url = reverse_lazy('user_storages:index')
+    template_name = "user_storages/delete_storage.html"
