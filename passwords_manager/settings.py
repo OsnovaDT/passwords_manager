@@ -24,6 +24,9 @@ INSTALLED_APPS = [
 
     # For VK authorization
     'social_django',
+
+    # For debug toolbar
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -34,6 +37,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # For debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'passwords_manager.urls'
