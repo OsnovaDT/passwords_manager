@@ -56,7 +56,7 @@ class SearchStorageView(ListView):
         query = self.request.GET.get('q')
 
         return Storage.objects.filter(
-            Q(name__icontains=query)
+            Q(name__icontains=query) & Q(owner=self.request.user.id)
         )
 
     def get_context_data(self, **kwargs):
