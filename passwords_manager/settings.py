@@ -148,3 +148,12 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = config(
 )
 
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+
+# Cache
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': path.join(BASE_DIR, 'cache')
+    }
+}
