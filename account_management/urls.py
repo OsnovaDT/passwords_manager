@@ -4,7 +4,7 @@ from django.contrib.auth.views import (
     PasswordResetDoneView, PasswordResetConfirmView,
     PasswordResetCompleteView
 )
-from django.urls import path, reverse_lazy
+from django.urls import path, reverse_lazy, include
 
 from .views import RegistrationView
 
@@ -88,4 +88,11 @@ urlpatterns = [
         ),
         name='password_reset_complete'
     ),
+
+    # VK authorization
+    path(
+        'social/',
+        include('social_django.urls', namespace='social')
+    ),
+
 ]

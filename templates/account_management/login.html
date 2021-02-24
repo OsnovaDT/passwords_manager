@@ -10,9 +10,17 @@
 
 {% block after_form %}
 <br>
+<!-- Registration -->
 <a class='text-dark' href="{% url 'account_management:registration' %}">
     <input class='btn btn-primary' type="submit" value="Регистрация">
 </a>
+
+<!-- VK authorization -->
+<a class='text-dark' href="{% url 'social:begin' 'vk-oauth2' %}">
+    <input class='btn btn-info' type="submit" value="VK">
+</a>
+
+<!-- Password reset -->
 <br><br>
 <a class='text-dark' href="{% url 'account_management:password_reset' %}">
     Забыли пароль?
