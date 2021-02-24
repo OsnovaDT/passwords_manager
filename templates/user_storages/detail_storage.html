@@ -1,7 +1,8 @@
-{% include 'layouts/basic.html' %}
+{% extends 'layouts/basic.html' %}
 
-{% load static %}
+{% block title %}Хранилище {{ storage.name }}{% endblock title %}
 
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -25,3 +26,4 @@
         </div>
     </div>
 </div>
+{% endblock content %}
