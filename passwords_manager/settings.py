@@ -1,6 +1,9 @@
-from pathlib import Path
-from os import path
+'''Settings for passwords_manager project'''
 
+from os import path
+from pathlib import Path
+
+# To hide important data
 from decouple import config
 
 
@@ -20,12 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # My apps
     'user_storages',
+    'account_management',
 
-    # For VK authorization
+    # For authorization by VK network
     'social_django',
 
-    # For debug toolbar
     'debug_toolbar',
 ]
 
@@ -38,10 +42,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # For debug toolbar
+    # For adding debug toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
+# For adding debug toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
@@ -60,7 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                # For VK login
+                # For authorization by VK network
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
@@ -116,7 +121,7 @@ LOGOUT_REDIRECT_URL = 'account_management:login'
 
 LOGIN_URL = 'account_management:login'
 
-# Email settings
+# Settings for send email messages
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -130,9 +135,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-# VK authorization
-
-# SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+# For authorization by VK network
 
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.vk.VKOAuth2',
@@ -149,10 +152,11 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = config(
 
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
-# Cache
+# For caching
 
 CACHES = {
     'default': {
+        # Cache will save in files in folder cache in the project
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': path.join(BASE_DIR, 'cache')
     }

@@ -1,21 +1,28 @@
+'''Urls for passwords_manager project'''
+
 from django.contrib import admin
 from django.urls import path, include
-import debug_toolbar
+from debug_toolbar import urls as debug_toolbar_urls
 
 urlpatterns = [
+    # Administrative site
     path('admin/', admin.site.urls),
+
+    # Index page
     path('index/', include('user_storages.urls')),
+
+    # Account management
     path('account/', include('account_management.urls')),
 
-    # VK authorization
+    # For authorization by VK network
     path(
         'social/',
         include('social_django.urls', namespace='social')
     ),
 
-    # Debug toolbar
+    # For adding debug toolbar
     path(
         '__debug__/',
-        include(debug_toolbar.urls)
+        include(debug_toolbar_urls)
     ),
 ]
