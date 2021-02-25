@@ -1,10 +1,17 @@
-from django.views.generic.edit import CreateView
+'''Views for account_management app'''
+
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
-from .forms import RegistrationForm
+from account_management.forms import RegistrationForm
 
 
-class RegistrationView(CreateView):
-    template_name = 'account_management/registration.html'
+class RegistrationView(CreateView):  # pylint: disable=too-many-ancestors
+    '''View for new user registration'''
+
     form_class = RegistrationForm
-    success_url = reverse_lazy('user_storages:index')
+
+    template_name = 'account_management/registration.html'
+
+    # After form execution we'll go to the login page
+    success_url = reverse_lazy('account_management:login')
