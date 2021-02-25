@@ -63,9 +63,10 @@
         </div>
     </div>
 
-    {% cache 86_400 search %}
+
     <!-- Search field -->
     {% if user.is_authenticated %}
+    {% cache 86_400 search %}
     <form class="form-inline" method="get" action="{% url 'user_storages:search_storage' %}">
         <input name="q" type="search" class="form-control mr-sm-2" placeholder="Поиск хранилища" aria-label="Search">
 
@@ -73,8 +74,8 @@
             Искать
         </button>
     </form>
-    {% endif %}
     {% endcache %}
+    {% endif %}
 </nav>
 
 <body>
