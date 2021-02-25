@@ -1,7 +1,5 @@
 {% extends 'layouts/basic.html' %}
 
-{% load static %}
-
 {% block content %}
 {% if storages %}
 <div class="container">
@@ -38,6 +36,7 @@
         {% endfor %}
     </div>
 </div>
+<!-- If there are no storages -->
 {% else %}
 <div class='jumbotron'>
     <h1 class='text-center'>
@@ -51,6 +50,7 @@
 
 {% block footer %}
 <footer>
+    <!-- Pagination -->
     <br><br>
     <!-- Next and previous -->
     {% if page_obj.has_next and page_obj.has_previous %}

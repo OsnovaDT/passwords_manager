@@ -1,11 +1,5 @@
 {% extends 'layouts/print_storages.html' %}
 
-{% load static %}
+{% block title %}Хранилища автора {{ user.username }}{% endblock title %}
 
-{% block title %}
-Хранилища автора {{ user.username }}
-{% endblock title %}
-
-{% block message_about_empty_results %}
-У вас еще нет хранилищ
-{% endblock message_about_empty_results %}
+{% block message_about_empty_results %}У вас еще нет хранилищ{% endblock message_about_empty_results %}

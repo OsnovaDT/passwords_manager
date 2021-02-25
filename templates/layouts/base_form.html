@@ -1,7 +1,5 @@
 {% extends 'layouts/basic.html' %}
 
-{% load static %}
-
 {% block content %}
 <div class="row">
     <div class="col-md-4 offset-md-4" class="jumbotron text-center">
@@ -23,6 +21,7 @@
                 </div>
                 {% endif %}
 
+                <!-- Fields -->
                 {% for field in form.visible_fields %}
                 <p>
                     {{ field.label_tag }}
@@ -43,7 +42,8 @@
 
                 <input type="hidden" name="next" value='{{ next }}'>
 
-                {% block submit_button %}{% endblock submit_button %}
+                {% block submit_button %}
+                {% endblock submit_button %}
             </form>
 
             {% block after_form %}
