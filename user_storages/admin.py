@@ -1,9 +1,13 @@
+'''Admin for user_storages app'''
+
 from django.contrib import admin
 
-from .models import Storage
+from user_storages.models import Storage
 
 
 class StorageAdmin(admin.ModelAdmin):
+    '''Admin class for Storage model'''
+
     list_display = (
         'name', 'owner', 'account_login',
         'account_password', 'notes',

@@ -1,12 +1,14 @@
+'''Urls for user_storages app'''
+
 from django.urls import path
 
-from .views import (
+from user_storages.views import (
     StorageListView, StorageCreateView,
     StorageUpdateView, StorageDeleteView,
     SearchStorageView, StorageDetailView
 )
 
-app_name = 'user_storages'
+app_name = 'user_storages'  # pylint: disable=invalid-name
 
 urlpatterns = [
     # Index page
@@ -37,7 +39,7 @@ urlpatterns = [
         name='delete_storage'
     ),
 
-    # Delete storage page
+    # Search storage page
     path(
         'search_storage/',
         SearchStorageView.as_view(),

@@ -1,9 +1,13 @@
+'''Models for user_storages app'''
+
 from django.db import models
-from django.core import validators
+# To encrypt field account_password
 from pgcrypto import EncryptedCharField
 
 
 class Storage(models.Model):
+    '''User storage model'''
+
     name = models.CharField(
         'Название хранилища',
         max_length=50,
@@ -12,7 +16,10 @@ class Storage(models.Model):
     )
 
     owner = models.ForeignKey(
+        # Choose user from users that there are on the site
         'auth.User',
+
+        # If we'll delete the owner all his storages will delete too
         on_delete=models.CASCADE,
         verbose_name='Владелец хранилища',
         db_column='owner',
@@ -34,19 +41,24 @@ class Storage(models.Model):
 
     notes = models.TextField(
         'Заметки',
-        null=True,
-        blank=True,
+
+        # This field can be empty
+        null=True, blank=True,
         db_column='notes'
     )
 
     date_of_creation = models.DateField(
         'Дата создания хранилища',
+
+        # This field won't be change when user will change his storage
         auto_now_add=True,
         db_column='date_of_creation'
     )
 
     date_of_edition = models.DateTimeField(
         'Дата изменения хранилища',
+
+        # This field will change when user will change his storage
         auto_now=True,
         db_column='date_of_edition'
     )
@@ -54,7 +66,9 @@ class Storage(models.Model):
     def __str__(self):
         return f'{self.owner} - {self.name}'
 
-    class Meta:
+    class Meta:  # pylint: disable=too-few-public-methods
+        '''Meta for user storage model'''
+
         verbose_name = 'Хранилище'
         verbose_name_plural = 'Хранилища'
         ordering = ['-date_of_edition', 'name']
