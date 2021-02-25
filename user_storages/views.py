@@ -75,18 +75,18 @@ class SearchStorageView(ListView):  # pylint: disable=too-many-ancestors
     model = Storage
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        user_query = self.request.GET.get('q')
 
         # Filter storages for current user by name from query
         return Storage.objects.filter(
-            Q(name__icontains=query) & Q(owner=self.request.user.id)
+            Q(name__icontains=user_query) & Q(owner=self.request.user.id)
         )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         # User query
-        context['query'] = self.request.GET.get('q')
+        context['user_query'] = self.request.GET.get('q')
 
         return context
 
