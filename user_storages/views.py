@@ -14,11 +14,18 @@ from user_storages.models import Storage
 from user_storages.forms import StorageCreateForm, StorageUpdateForm
 
 
+USER_STORAGES_FOLDER_NAME = 'user_storages/'
+STORAGES_CONTEXT_OBJECT_NAME = 'storages'
+
+# Only 9 storages will show on a single page
+STORAGES_AMOUNT_FOR_PAGINATION = 9
+
+
 class StorageListView(LoginRequiredMixin, ListView):  # pylint: disable=too-many-ancestors
     '''Storage list view for index page'''
 
-    template_name = 'user_storages/index.html'
-    context_object_name = 'storages'
+    template_name = USER_STORAGES_FOLDER_NAME + 'index.html'
+    context_object_name = STORAGES_CONTEXT_OBJECT_NAME
 
     def get_queryset(self):
         current_user_id = self.request.user.id
@@ -26,11 +33,19 @@ class StorageListView(LoginRequiredMixin, ListView):  # pylint: disable=too-many
         # Storages for current user
         return Storage.objects.filter(owner=current_user_id)
 
-    # Only 9 storages will show on a single page
-    paginate_by = 9
+    paginate_by = STORAGES_AMOUNT_FOR_PAGINATION
 
 
-class StorageCreateView(CreateView):  # pylint: disable=too-many-ancestors
+class StorageBaseView:  # pylint: disable=too-few-public-methods
+    '''Storage base view'''
+
+    model = Storage
+
+    # After storage creation we'll go to the index page
+    success_url = reverse_lazy('user_storages:index')
+
+
+class StorageCreateView(StorageBaseView, CreateView):  # pylint: disable=too-many-ancestors
     '''Storage create view'''
 
     def form_valid(self, form):
@@ -40,38 +55,27 @@ class StorageCreateView(CreateView):  # pylint: disable=too-many-ancestors
         return super().form_valid(form)
 
     form_class = StorageCreateForm
-    template_name = "user_storages/create_storage.html"
-
-    # After storage creation we'll go to the index page
-    success_url = reverse_lazy('user_storages:index')
+    template_name = USER_STORAGES_FOLDER_NAME + 'create_storage.html'
 
 
-class StorageUpdateView(UpdateView):  # pylint: disable=too-many-ancestors
+class StorageUpdateView(StorageBaseView, UpdateView):  # pylint: disable=too-many-ancestors
     '''Storage update view'''
 
-    model = Storage
     form_class = StorageUpdateForm
-    template_name = "user_storages/update_storage.html"
-
-    # After storage updating we'll go to the index page
-    success_url = reverse_lazy('user_storages:index')
+    template_name = USER_STORAGES_FOLDER_NAME + 'update_storage.html'
 
 
-class StorageDeleteView(DeleteView):  # pylint: disable=too-many-ancestors
+class StorageDeleteView(StorageBaseView, DeleteView):  # pylint: disable=too-many-ancestors
     '''Storage delete view'''
 
-    model = Storage
-    template_name = "user_storages/delete_storage.html"
-
-    # After storage deleting we'll go to the index page
-    success_url = reverse_lazy('user_storages:index')
+    template_name = USER_STORAGES_FOLDER_NAME + 'delete_storage.html'
 
 
 class SearchStorageView(ListView):  # pylint: disable=too-many-ancestors
     '''Storage search view'''
 
-    template_name = 'user_storages/search_storage.html'
-    context_object_name = 'storages'
+    template_name = USER_STORAGES_FOLDER_NAME + 'search_storage.html'
+    context_object_name = STORAGES_CONTEXT_OBJECT_NAME
     model = Storage
 
     def get_queryset(self):
@@ -95,4 +99,4 @@ class StorageDetailView(DetailView):  # pylint: disable=too-many-ancestors
     '''Storage detail view'''
 
     model = Storage
-    template_name = 'user_storages/detail_storage.html'
+    template_name = USER_STORAGES_FOLDER_NAME + 'detail_storage.html'
