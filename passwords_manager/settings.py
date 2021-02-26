@@ -95,6 +95,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            # Min password length is 12
+            'min_length': 12,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -102,6 +106,33 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+
+    # My validators
+
+    # Password must has at least 1 number
+    {
+        'NAME': 'passwords_manager.password_validators.AtLeast1NumberValidator',
+    },
+
+    # Password must has at least 1 lowercase letter
+    {
+        'NAME': 'passwords_manager.password_validators.AtLeast1LowercaseLetterValidator',
+    },
+
+    # Password must has at least 1 uppercase letter
+    {
+        'NAME': 'passwords_manager.password_validators.AtLeast1UppercaseLetterValidator',
+    },
+]
+
+PASSWORD_HASHERS = [
+    # My more secure hasher
+    'passwords_manager.hashers.MoreSecureArgon2PasswordHasher',
+
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
 LANGUAGE_CODE = 'ru-ru'
@@ -115,6 +146,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    path.join(BASE_DIR, 'static'),
+)
 
 # Redirect url for login and logout
 

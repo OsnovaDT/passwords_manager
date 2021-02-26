@@ -1,5 +1,7 @@
 '''Urls for user_storages app'''
 
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from user_storages.views import (
@@ -52,4 +54,4 @@ urlpatterns = [
         StorageDetailView.as_view(),
         name='storage_detail'
     ),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

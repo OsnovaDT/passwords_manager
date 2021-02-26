@@ -1,7 +1,10 @@
 # Images of some pages
 
 Registration page:
-![Registration page](https://github.com/OsnovaDT/passwords_manager/raw/master/images/registration_page.png)
+![Registration page](https://github.com/OsnovaDT/passwords_manager/raw/master/images/user_registration_page.png)
+
+Failed registration page:
+![Failed registration page](https://github.com/OsnovaDT/passwords_manager/raw/master/images/failed_registration_page.png)
 
 Login page:
 ![Login page](https://github.com/OsnovaDT/passwords_manager/raw/master/images/login_page.png)

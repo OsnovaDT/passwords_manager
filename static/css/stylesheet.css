@@ -1,0 +1,10 @@
+.password_requirements_list {
+    /*верхний, правый, нижний, левый внешние отступы*/
+    margin: 0px 10px 5px 30px; 
+
+}
+
+.list-group-item{
+    /*верхний, правый, нижний, левый внешние отступы*/
+    margin: 0px -150px 5px 0px;
+}

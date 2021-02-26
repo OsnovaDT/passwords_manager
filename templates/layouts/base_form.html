@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-4 offset-md-4" class="jumbotron text-center">
+    <div class="col-md-4 offset-md-4">
         <div class="jumbotron text-center">
             {% block before_form %}
             {% endblock before_form %}
@@ -50,5 +50,8 @@
             {% endblock after_form %}
         </div>
     </div>
+
+    {% block to_the_right_of_the_form %}
+    {% endblock to_the_right_of_the_form %}
 </div>
 {% endblock content %}

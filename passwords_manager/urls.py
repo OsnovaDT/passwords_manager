@@ -1,8 +1,11 @@
 '''Urls for passwords_manager project'''
 
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from debug_toolbar import urls as debug_toolbar_urls
+
 
 urlpatterns = [
     # Administrative site
@@ -25,4 +28,4 @@ urlpatterns = [
         '__debug__/',
         include(debug_toolbar_urls)
     ),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
