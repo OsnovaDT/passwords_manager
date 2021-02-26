@@ -34,7 +34,6 @@ class Storage(models.Model):
 
     account_password = EncryptedCharField(
         'Пароль',
-        max_length=50,
         db_column='account_password',
         help_text='Пароль от аккаунта',
     )

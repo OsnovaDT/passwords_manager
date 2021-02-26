@@ -83,6 +83,9 @@ DATABASES = {
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT'),
+        'TEST': {
+            'NAME': 'tests_for_passwords_manager_project',
+        },
     }
 }
 
