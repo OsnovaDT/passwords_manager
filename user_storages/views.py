@@ -18,7 +18,7 @@ USER_STORAGES_FOLDER_NAME = 'user_storages/'
 STORAGES_CONTEXT_OBJECT_NAME = 'storages'
 
 # Only 9 storages will show on a single page
-STORAGES_AMOUNT_FOR_PAGINATION = 9
+STORAGES_AMOUNT_FOR_PAGINATION = 6
 
 
 class StorageListView(LoginRequiredMixin, ListView):  # pylint: disable=too-many-ancestors
